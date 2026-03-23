@@ -1,4 +1,6 @@
 # Gayatri | Personal Portfolio
+Link: https://gayatripasricha.github.io/GayatriPortfolioWebsite/
+
 
 A modern, responsive, and minimalist personal portfolio website built with HTML, CSS, and vanilla JavaScript.
 
