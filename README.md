@@ -52,8 +52,6 @@ git clone https://github.com/GayatriPasricha/GayatriWebsite.git
 cd GayatriWebsite
 # Open index.html in your browser
 ```
-This project is open-source and available under the [MIT License](LICENSE).
-
 ---
 
 Built with ❤️ by [Gayatri](https://github.com/GayatriPasricha)
