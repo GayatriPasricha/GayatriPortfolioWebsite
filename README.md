@@ -2,7 +2,7 @@
 
 A modern, responsive, and minimalist personal portfolio website built with HTML, CSS, and vanilla JavaScript.
 
-![Portfolio Preview](screenshot.png) *(Note: Add a screenshot of your site here!)*
+<img width="1861" height="838" alt="image" src="https://github.com/user-attachments/assets/3e3daef3-2197-4d52-99d2-d5da0f6fe695" />
 
 ## 🚀 Features
 
@@ -50,9 +50,6 @@ git clone https://github.com/GayatriPasricha/GayatriWebsite.git
 cd GayatriWebsite
 # Open index.html in your browser
 ```
-
-## 📄 License
-
 This project is open-source and available under the [MIT License](LICENSE).
 
 ---
