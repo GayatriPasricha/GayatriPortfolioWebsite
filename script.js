@@ -76,11 +76,20 @@ fadeElements.forEach((el) => fadeObserver.observe(el));
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 
-// Google Sheets Web App URL (handles both data logging + email notification)
-const GOOGLE_SHEETS_URL = 'YOUR_GOOGLE_SHEETS_EXEC_URL';
+// Google Sheets Configuration (Obfuscated for minor security on public repos)
+// To update, search for "Base64 encode" online, scramble your URL, and paste it below.
+const _0x4f2a = 'aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J4bHZqU3lMTFcwQW1wcXZoQXczckdhVFhSZnQtNkxxR1pQbUdZYlVJWXZsUjZxSDFjbU1GVUNYX3Y5N1I3OFhOWUkvZXhlYw==';
+const GOOGLE_SHEETS_URL = _0x4f2a !== 'YOUR_OBFUSCATED_URL_HERE' ? atob(_0x4f2a) : null;
 
 contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+
+  // Guard: Check if the URL is set
+  if (!GOOGLE_SHEETS_URL || _0x4f2a === 'YOUR_OBFUSCATED_URL_HERE') {
+    formStatus.textContent = '⚠️ Contact form setup is incomplete. Please check script.js.';
+    formStatus.className = 'form-status error';
+    return;
+  }
 
   const formData = new FormData(contactForm);
   const name = formData.get('name');
@@ -92,7 +101,8 @@ contactForm.addEventListener('submit', async (e) => {
   submitBtn.innerHTML = 'Sending... <i class="ri-loader-4-line"></i>';
 
   try {
-    await fetch(GOOGLE_SHEETS_URL, {
+    // Send to Google Sheets
+    const response = await fetch(GOOGLE_SHEETS_URL, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
@@ -104,10 +114,12 @@ contactForm.addEventListener('submit', async (e) => {
       }),
     });
 
+    // Note: With 'no-cors', we can't check response.ok, so we assume success if no error is thrown
     formStatus.textContent = '✅ Message sent successfully! I\'ll get back to you soon.';
     formStatus.className = 'form-status success';
     contactForm.reset();
   } catch (err) {
+    console.error('Submission error:', err);
     formStatus.textContent = '❌ Oops! Something went wrong. Please try again.';
     formStatus.className = 'form-status error';
   } finally {
